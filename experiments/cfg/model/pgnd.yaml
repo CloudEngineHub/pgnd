@@ -1,0 +1,9 @@
+defaults:
+  - material: pointnet_nerf_material
+  - friction: default
+  - _self_
+
+ckpt: null
+clip_bound: 1.5
+eef_t: [0.0, 0.0, 0.01]
+gripper_radius: 0.04

@@ -1,0 +1,22 @@
+defaults:
+  - model: pgnd
+  - render: default
+  - sim: default
+  - train: default
+  - _self_
+  - override hydra/job_logging: disabled
+  - override hydra/hydra_logging: disabled
+
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+
+seed: 0
+cpu: 0
+num_cpus: 128
+gpus: 
+  - 0
+overwrite: False
+resume: False
+debug: False
