@@ -58,7 +58,7 @@ def calibrate(use_robot=True, reset_robot=True, wrist=None):
     exposure_time = 5
     env = RobotEnv(
         use_camera=True,
-        WH=[1280, 720],
+        WH=[848, 480],
         obs_fps=5,
         n_obs_steps=2,
         use_robot=use_robot,
@@ -82,10 +82,9 @@ def calibrate(use_robot=True, reset_robot=True, wrist=None):
 
 
 def calibrate_bimanual(reset_robot=True):
-
     exposure_time = 5
     env = BimanualRobotEnv(
-        WH=[1280, 720],
+        WH=[848, 480],
         obs_fps=5,
         n_obs_steps=2,
         speed=100,
