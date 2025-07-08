@@ -87,6 +87,26 @@ For the checkpoints, the files should be unzipped and organized as the following
 ```
 The path needs to match exactly for training and inference scripts to work. If you need to use data in a different format, you may need to directly modify the code to accomodate.
 
+## Custom Dataset
+
+For processing data from raw RGB-D recordings, the following pre-trained detection, segmentation, and tracking models are required. These can be installed by:
+```
+pip install iopath
+pip install segment-anything
+pip install --no-deps git+https://github.com/IDEA-Research/GroundingDINO
+pip install --no-deps git+https://github.com/facebookresearch/sam2
+pip install --no-deps git+https://github.com/facebookresearch/co-tracker
+```
+And the weights can be downloaded from [this link](https://drive.google.com/drive/folders/1Z70RgW7oiTIfvdk_qOOtqDGsMFQ0jimY?usp=sharing). Extract files and put them in the ```weights/``` folder.
+
+The raw data should contain multi-view rgb and depth image recordings, and robot end-effector translation/rotation/gripper openness recordings. An example of raw data is available at 
+[this link](https://drive.google.com/drive/folders/1QQ2ftIJZWFGzBeFg3bxqy6ktsUgmsHts?usp=drive_link) and could be extracted to ```experiments/log/data/cloth_test```. 
+
+For data processing, the following command runs the data processing code and generates the processed dataset with point tracks:
+```
+python experiments/real_world/postprocess.py
+```
+
 ## Training
 Once the datasets are prepared, we provide training scripts in the ```experiments/scripts``` folder. 
 ```
