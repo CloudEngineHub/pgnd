@@ -175,24 +175,8 @@ def match_timestamps(name: str, recording_dirs: dict, num_cams: int = 4):
                 np.savetxt(episode_save_dir_robot / f"{t:06d}.txt", robot_data)
 
 
-
 def load_camera(episode_data_dir):
     intr = np.load(episode_data_dir / 'calibration' / 'intrinsics.npy').astype(np.float32)
-    if intr[:, 0, 2].mean() < 400 or intr[:, 0, 2].mean() > 450:
-        print('saved intrinsics not 848x480, using default intrinsics')
-        intr = np.array(
-            [[[422.80752563,   0.        , 429.38644409],
-                [  0.        , 422.24777222, 242.79046631],
-                [  0.        ,   0.        ,   1.        ]],
-            [[425.18017578,   0.        , 433.29647827],
-                [  0.        , 424.74880981, 241.31455994],
-                [  0.        ,   0.        ,   1.        ]],
-            [[425.6446228 ,   0.        , 431.46713257],
-                [  0.        , 425.16427612, 240.70306396],
-                [  0.        ,   0.        ,   1.        ]],
-            [[426.66485596,   0.        , 425.43218994],
-                [  0.        , 426.12188721, 245.81968689],
-                [  0.        ,   0.        ,   1.        ]]])
     rvec = np.load(episode_data_dir / 'calibration' / 'rvecs.npy')
     tvec = np.load(episode_data_dir / 'calibration' / 'tvecs.npy')
     R = [cv2.Rodrigues(rvec[i])[0] for i in range(rvec.shape[0])]
@@ -203,7 +187,6 @@ def load_camera(episode_data_dir):
         extrs[i, :3, 3] = T[i]
         extrs[i, 3, 3] = 1
     return intr, extrs
-
 
 
 class PostProcessor:
