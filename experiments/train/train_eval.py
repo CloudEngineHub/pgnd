@@ -625,7 +625,7 @@ class Trainer:
                     extra_save = {
                         'gripper_x': gripper_x[0, step],
                         'gripper_v': gripper_v[0, step],
-                        'gripper_actions': actions[0, step],
+                        'grippers': actions[0, step],
                     }
                     x = x[:, :num_particles_orig]
                     v = v[:, :num_particles_orig]

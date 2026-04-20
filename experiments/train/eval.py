@@ -79,7 +79,7 @@ def eval(
     use_pv = cfg.train.use_pv
     if not use_pv:
         print('not using pv rendering...')
-
+    
     # decide whether to use gs rendering based on the existence of gs files
     assert os.path.exists(log_root / str(cfg.train.source_dataset_name) / f'episode_{episode:04d}' / 'meta.txt')
     meta = np.loadtxt(log_root / str(cfg.train.source_dataset_name) / f'episode_{episode:04d}' / 'meta.txt')
@@ -272,7 +272,7 @@ def eval(
                 extra_save = {
                     'gripper_x': gripper_x[0, step],
                     'gripper_v': gripper_v[0, step],
-                    'gripper_actions': actions[0, step],
+                    'grippers': actions[0, step],
                 }
                 x = x[:, :num_particles_orig]
                 v = v[:, :num_particles_orig]
